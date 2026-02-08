@@ -1,0 +1,14 @@
+# Data files
+data/*.csv
+data/*.xlsx
+
+# Mac
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.env
+
