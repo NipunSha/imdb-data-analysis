@@ -1,56 +1,112 @@
 # IMDB Movies Data Analysis (SQL + Python)
 
-An analysis of the IMDB Top 1000 movies dataset.  
-Workflow: clean the raw CSV in Python → load into MySQL → run SQL analysis queries → summarize insights.
+This project analyzes the IMDB Top 1000 movies dataset to answer practical, business-style questions using Python and MySQL.
 
-## Tools
-- Python (pandas) for cleaning
-- MySQL + MySQL Workbench for analysis
-- Git/GitHub for version control
+The goal was not just to run queries, but to build a clean, reproducible workflow:
+- Clean messy raw data in Python
+- Load it into MySQL with a proper schema
+- Write SQL queries to extract insights about ratings, directors, genres, and revenue
 
-## Dataset
-IMDB Top 1000 Movies (CSV) with columns like title, year, rating, votes, genre, runtime, gross revenue.
+This is the kind of work you’d do in a real analytics or business intelligence role.
 
-## Project Workflow
-1. **Clean data (Python)**
-   - Standardizes numeric fields (votes, gross, ratings)
-   - Handles blanks safely for SQL import
+---
 
-2. **Load into MySQL**
-   - Raw table: `imdb_movies_raw` (all text)
-   - Cleaned table: `imdb_movies` (typed numeric columns)
+## 📊 Business Questions Answered
 
-3. **Analysis (SQL)**
-   - Top movies by rating (tie-break by votes)
-   - Top directors by average rating
-   - Revenue trends by decade
-   - Genre-level performance (ratings + gross)
+Some of the questions explored in this project:
 
-## Key Insights (from queries)
-- Ratings are consistently available; voting volume helps validate rankings.
-- Meta_score is mostly missing in this dataset (handled safely as NULL).
-- Gross revenue is missing for some movies; trends are computed using available records.
+- Which movies are the highest rated (with vote count used as a tie-breaker)?
+- Which directors have the best average ratings (with a minimum movie threshold)?
+- How does movie revenue change across decades?
+- Which genres perform best in terms of volume, ratings, and total revenue?
 
-## Outputs
+---
 
-### Top movies by rating
-![Top Movies](screenshots/01_top_movies.png)
+## 🛠️ Workflow
 
-### Top directors by average rating
-![Top Directors](screenshots/02_top_directors.png)
+1. **Data Cleaning (Python / pandas)**
+   - Script: `clean_imdb.py`
+   - Handles missing values, fixes formats, and prepares the dataset for SQL import
 
-### Revenue by decade
-![Revenue by Decade](screenshots/03_revenue_by_decade.png)
+2. **Database Setup & Transformation (MySQL)**
+   - `sql/01_schema_and_load.sql`  
+     Creates the raw table and prepares the database
+   - `sql/02_clean_transform.sql`  
+     Safely converts text fields into proper numeric columns (year, rating, votes, gross, etc.)
 
-### Genre performance
-![Genre Performance](screenshots/04_genre_performance.png)
+3. **Analysis (MySQL)**
+   - `sql/03_analysis.sql`  
+     Contains queries for:
+     - Top movies by rating
+     - Top directors by average rating
+     - Revenue by decade
+     - Genre performance
 
-## How to Run (quick)
-1. Create schema + raw table: run `sql/01_schema_and_load.sql`
-2. Import CSV into `imdb_movies_raw` (Workbench Table Data Import Wizard)
-3. Transform into clean table: run `sql/02_clean_transform.sql`
-4. Run analysis queries: run `sql/03_analysis.sql`
+---
 
-## Author
-Nipun Sharma
+## 📈 Example Outputs
 
+Screenshots of query results are available in the `screenshots/` folder, including:
+- Top 10 movies by rating
+- Top directors by average rating
+- Revenue by decade
+- Genre performance summary
+
+---
+
+## 💡 Key Takeaways
+
+- Built a clean SQL analytics table from messy real-world data
+- Used defensive SQL casting to avoid common data quality issues
+- Designed queries that answer real business-style questions, not just toy examples
+- Structured the project so it can be easily reproduced by someone else
+
+---
+
+## 🧰 Tools Used
+
+- Python (pandas) for data cleaning
+- MySQL for storage and analysis
+- MySQL Workbench for querying
+- Git & GitHub for version control and project presentation
+
+---
+
+## 📁 Repository Structure
+
+imdb-data-analysis/
+├── sql/
+│ ├── 01_schema_and_load.sql
+│ ├── 02_clean_transform.sql
+│ └── 03_analysis.sql
+├── screenshots/
+│ ├── 01_top_movies.png
+│ ├── 02_top_directors.png
+│ ├── 03_revenue_by_decade.png
+│ └── 04_genre_performance.png
+├── clean_imdb.py
+├── .gitignore
+└── README.md
+
+
+---
+
+## 🚀 How to Reproduce
+
+1. Run `clean_imdb.py` to clean the raw dataset (not included in repo)
+2. Import the cleaned CSV into MySQL as `imdb_movies_raw`
+3. Run SQL scripts in order:
+   - `01_schema_and_load.sql`
+   - `02_clean_transform.sql`
+   - `03_analysis.sql`
+
+---
+
+## 📌 Why This Project
+
+This project demonstrates how I approach data work in a practical setting:
+- Start with messy data
+- Clean it properly
+- Design a usable data model
+- Write queries that support real analytical questions
+- Present results clearly and reproducibly
