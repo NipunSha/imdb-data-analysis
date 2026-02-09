@@ -1,6 +1,6 @@
 # IMDB Movies Data Analysis (SQL + Python)
 
-Business-style analysis of the IMDB Top 1000 movies dataset.  
+An analysis of the IMDB Top 1000 movies dataset.  
 Workflow: clean the raw CSV in Python → load into MySQL → run SQL analysis queries → summarize insights.
 
 ## Tools
