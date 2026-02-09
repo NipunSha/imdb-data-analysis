@@ -21,6 +21,8 @@ The workflow mirrors a real analytics setup:
 
 ## 📁 Project Structure
 
+```
+
 imdb-data-analysis/
 ├── sql/
 │   ├── 01_schema_and_load.sql
@@ -37,6 +39,7 @@ imdb-data-analysis/
 ├── README.md
 └── .gitignore
 
+```
 
 ## 🔄 Workflow
 1. Raw data ingestion
