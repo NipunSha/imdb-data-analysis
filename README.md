@@ -21,7 +21,6 @@ The workflow mirrors a real analytics setup:
 
 ## 📁 Project Structure
 
-```text
 imdb-data-analysis/
 ├── sql/
 │   ├── 01_schema_and_load.sql
